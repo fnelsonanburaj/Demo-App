@@ -570,7 +570,7 @@
         scale: 0,
         translateX: -500
       }, {
-        duration: 751
+        duration: 750
       });
     };
 
