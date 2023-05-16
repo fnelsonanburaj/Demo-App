@@ -1,0 +1,19 @@
+steps:
+- name: 'gcr.io/cloud-builders/git'
+  args:
+  - 'diff'
+  - '--name-only'
+  - 'HEAD~1'
+
+- name: 'gcr.io/cloud-builders/bash'
+  entrypoint: 'bash'
+  args:
+  - '-c'
+  - |
+    if git diff --name-only HEAD~1 | grep -q "/Demo-App/demoweb/css"; then
+      echo 'hello css'
+    elif git diff --name-only HEAD~1 | grep -q "/Demo-App/demoweb/js"; then
+      echo 'hello js'
+    else
+      echo 'no changes happened'
+    fi
